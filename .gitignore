@@ -12,3 +12,8 @@ xcuserdata/
 # Xcode build output / derived data (in case it ever lands in-repo)
 DerivedData/
 build/
+
+# Node / Cloudflare Workers
+node_modules/
+.wrangler/
+backend/dist/
