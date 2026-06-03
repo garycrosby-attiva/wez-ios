@@ -1,0 +1,69 @@
+schema: spec-driven
+
+# Project context (optional)
+# This is shown to AI when creating artifacts.
+# Add your tech stack, conventions, style guides, domain knowledge, etc.
+# Example:
+#   context: |
+#     Tech stack: TypeScript, React, Node.js
+#     We use conventional commits
+#     Domain: e-commerce platform
+# Paste this under the `schema:` line that `openspec init` writes into
+# openspec/config.yaml — replacing the commented `# context:` example.
+# Keep init's existing `schema:` value as-is.
+
+context: |
+  # Where's Ez — project context
+
+  Purpose: a today-only beach app for iOS. It answers one question — where, right now,
+  is the wind not and the sun is? A local whose own beach is blown out wants the
+  sheltered spot ten minutes away; a traveller with a day to spend wants the calm side
+  of today. One pinpointed answer, no weather-map reading. (The full vision line and the
+  "friend" voice are maintained by the creative and are not restated here — honour the
+  voice, don't redefine it.)
+
+  Product principles (cross-cutting — shape acceptance criteria wherever they apply):
+  - Today-only: V1 recommends for now, not future planning. No plan-ahead.
+  - Live-camera-only Spotted: every Spotted post is happening right now — the live camera,
+    never a library upload. Non-negotiable.
+  - Honest about state: never fake a capability or a recommendation; when there is no good
+    spot, say so plainly and stop — do not pivot to a lesser alternative. Placeholders and
+    empty states are warm and truthful.
+  - Adaptive friend voice: speak to the individual (suntanner, family, picnicker…), not to
+    a generic audience; when wrong, respond with humility and let the user correct it.
+
+  Tech stack:
+  - SwiftUI, iOS, Swift 6 (strict concurrency). App target WheresEz,
+    bundle id au.com.attivacollective.WheresEz.
+  - Local Swift package WezKit: WezSpecs (contracts + domain types, no deps),
+    WezImplementations (concrete adapters, deps WezSpecs),
+    WezTestSupport (in-memory doubles, deps WezSpecs).
+  - Backend: Cloudflare — Workers (API), D1 (post metadata), R2 (photo blobs).
+    Local-only; not yet deployed.
+  - Single git repo at root (wez-ios); backend as a backend/ folder within it.
+
+  Conventions:
+  - Spec / implementation / test separation with dependency inversion: contracts and domain
+    types live in WezSpecs; implementations depend inward on them; tests run against
+    in-memory doubles in WezTestSupport. A new seam = protocol in WezSpecs, concrete in
+    WezImplementations, double in WezTestSupport.
+  - Testing: Swift Testing.
+
+  Domain:
+  - Beaches only in V1 (no parks). Seed regions: Sunshine Coast and Port Fairy (local ground
+    truth and willing early spotters); otherwise available across Australia.
+
+  Constraints:
+  - Backend not yet deployed; anything needing a live endpoint is out of scope until it lands.
+  - Out of V1: plan-ahead, Saved (save-and-recall), friend-voice paragraphs, business
+    partnerships, and dating / social-expansion surfaces.
+
+# Per-artifact rules (optional)
+# Add custom rules for specific artifacts.
+# Example:
+#   rules:
+#     proposal:
+#       - Keep proposals under 500 words
+#       - Always include a "Non-goals" section
+#     tasks:
+#       - Break tasks into chunks of max 2 hours
