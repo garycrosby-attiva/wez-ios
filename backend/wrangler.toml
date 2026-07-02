@@ -1,3 +1,14 @@
 name = "wez-backend"
 main = "src/index.ts"
 compatibility_date = "2025-01-01"
+
+# Local-only for this change. database_id is a placeholder; `wrangler dev` and the
+# `--local` d1 commands use a local SQLite file under .wrangler/, not a hosted DB.
+[[d1_databases]]
+binding = "DB"
+database_name = "wez-db"
+database_id = "local-wez-db"
+
+[[r2_buckets]]
+binding = "PHOTOS"
+bucket_name = "wez-photos"

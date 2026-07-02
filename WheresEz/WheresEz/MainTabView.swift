@@ -12,12 +12,14 @@ import SwiftUI
 /// would sit *outside* this view. There is deliberately NO central "hide-the-nav" route
 /// registry — adding a screen later carries its own chrome by construction.
 struct MainTabView: View {
+    let spotted: SpottedEnvironment
+
     var body: some View {
         TabView {
             NavigationStack { HomeView() }
                 .tabItem { Label("Home", systemImage: "sun.max") }
 
-            NavigationStack { SpottedView() }
+            NavigationStack { SpottedView(env: spotted) }
                 .tabItem { Label("Spotted", systemImage: "camera") }
 
             NavigationStack { SavedView() }
@@ -30,5 +32,5 @@ struct MainTabView: View {
 }
 
 #Preview {
-    MainTabView()
+    MainTabView(spotted: Composition.liveSpottedEnvironment())
 }
