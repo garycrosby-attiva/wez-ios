@@ -93,15 +93,16 @@ or simulate save-and-recall or profile-feed behaviour.
 - **THEN** a placeholder screen states that the user's feed and future spots will live here
 - **AND** no profile-feed functionality is offered
 
-### Requirement: Home and Spotted are navigable empty states
+### Requirement: Home is a navigable empty state
 
-The Home and Spotted tabs SHALL present real, navigable empty states within their own
-navigation stacks, with no feature content. The shell SHALL NOT show any live data in
-these tabs.
+The Home tab SHALL present a real, navigable empty state within its own navigation stack,
+with no feature content and no live data. (Spotted is no longer an empty state — it now
+hosts the Spotted feed and capture flow; see the `spotted-feed` and `spotted-capture`
+capabilities.)
 
-#### Scenario: Home and Spotted open as empty navigable tabs
+#### Scenario: Home opens as an empty navigable tab
 
-- **WHEN** the user opens the Home tab or the Spotted tab
+- **WHEN** the user opens the Home tab
 - **THEN** the tab shows a minimal empty state inside its navigation stack
-- **AND** no recommendation, friend-voice, capture, or feed content is shown
+- **AND** no recommendation or friend-voice content is shown
 - **AND** no live backend data is displayed
