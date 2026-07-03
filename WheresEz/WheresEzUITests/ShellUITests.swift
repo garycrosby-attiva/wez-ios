@@ -38,10 +38,8 @@ final class ShellUITests: XCTestCase {
 
         XCTAssertTrue(app.staticTexts["Today's beach pick will show up here."].waitForExistence(timeout: 2),
                       "Home empty state")
-
-        tabBar.buttons["Spotted"].tap()
-        XCTAssertTrue(app.staticTexts["What people are spotting right now will show up here."].waitForExistence(timeout: 2),
-                      "Spotted empty state")
+        // Spotted is no longer an empty state — it hosts the feed (see spotted-feed); the
+        // add-spotted-capture-feed change verifies Spotted's own behaviour.
 
         tabBar.buttons["Saved"].tap()
         XCTAssertTrue(app.staticTexts["Soon you'll be able to keep the spots you want to come back to."].waitForExistence(timeout: 2),

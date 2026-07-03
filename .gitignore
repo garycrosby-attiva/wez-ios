@@ -17,3 +17,6 @@ build/
 node_modules/
 .wrangler/
 backend/dist/
+
+# Local Claude Code tooling (commands/skills)
+.claude/
